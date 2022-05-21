@@ -1,4 +1,4 @@
-* Equipe: Tamanduatech
+* Equipe: Tamandutech
 * Nome: Victor Hugo Lourenco
 * Linguagem: C++
 * Desafio: Apresentar a solução para os desafios propostos na categoria de programação do seguidor de linha
