@@ -1,1 +1,2 @@
 # Desafios
+- Categoria: Programação
