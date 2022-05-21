@@ -25,6 +25,7 @@ PRINCIPAIS FUNCOES REFERENTE A CADA DESAFIO
   * void distaciaPercorrida();
   
 -> DESAFIO 4
+  * void contador();
   * void deboucing();
 
 */
@@ -84,7 +85,8 @@ unsigned int RPM = 0;
 volatile byte pulsos = 0;
 unsigned long timeold = 0;
 // Varias para calculo de distancia
-unsigned int PPM = 0; // Pulsos por metro
+unsigned int PPI = 0; // Pulsos por polegada
+float DP = 0; // Distancia percorrida
 // O PPR varia de encoder para encoder
 unsigned int PPR = 20; // Pulso por rotacao
 const float pi = 3.14;
@@ -314,19 +316,21 @@ void calculoRPM(){
 
 void distaciaPercorrida(){
   /* EXPLICACAO
-   * Formula para calcular a distancia percorrida em metros
-   * Fómula: PPM = PPR/π.R.2
+   * Formula para calcular pulsos por polegada
+   * Fómula: PPI = PPR/π.R.2
    * Onde:  
-   * PPM: Pulsos por metro
+   * PPI: Pulsos por polegada
    * PPR: Pulsos por rotacao
    * π: Contante de pi(3.14...)
    * R: Raio da roda
-   * Obs: Atraves do PPM e possivel descobrir a distacia percorrida em metros
+   * Obs: Atraves do PPI e possivel descobrir a distacia percorrida em metros
    */
    
-   PPM = PPR / (pi * R * 2);
-   Serial.print("DP: "); // Distacia percorrida
-   Serial.println(PPM + "m");
+   PPI = PPR / (pi * R * 2);
+   DP = pulsos / PPI; // Distancia em polegadas
+   DP = DP * 0.0254 // Conversao de polegadas para metros
+   Serial.print("DP: "); 
+   Serial.println(DP + "m"); // Distancia percorrida em metros
      
 }
 
